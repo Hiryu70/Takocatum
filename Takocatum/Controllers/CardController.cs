@@ -1,12 +1,11 @@
-﻿using MediatR;
+﻿using Application.Cards.Queries.GetCard;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Takocatum.Dtos;
-using Takocatum.Queries;
 
 namespace Takocatum.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CardController : Controller
     {
         private readonly ILogger<CardController> _logger;
@@ -19,7 +18,7 @@ namespace Takocatum.Controllers
         }
 
         [HttpGet(Name = "GetCard")]
-        public async Task<CardDto> Get(int id)
+        public async Task<GetCardDto> Get(int id)
         {
             _logger.Log(LogLevel.Information, $"GetCard. Id:{id}");
             return await _mediator.Send(new GetCardQuery(id));

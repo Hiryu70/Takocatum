@@ -1,4 +1,4 @@
-﻿namespace Takocatum
+﻿namespace Domain.Enums
 {
     public enum Color
     {

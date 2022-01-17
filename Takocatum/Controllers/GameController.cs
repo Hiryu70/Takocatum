@@ -1,12 +1,14 @@
-﻿using MediatR;
+﻿using Application.Games.Queries.GetGameByExternalId;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Takocatum.Dtos;
 
 namespace Takocatum.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class GameController : Controller
     {
-        private readonly ILogger<CardController> _logger;
+        private readonly ILogger<GameController> _logger;
         private readonly IMediator _mediator;
 
         public GameController(ILogger<GameController> logger, IMediator mediator)
@@ -15,10 +17,11 @@ namespace Takocatum.Controllers
             _mediator = mediator;
         }
 
-        public async Task<GameDto> Get(int id)
+        [HttpGet(Name = "GetGame")]
+        public async Task<GetGameByExternalIdDto> GetGame(string externalId)
         {
-            _logger.Log(LogLevel.Information, $"GetCard. Id:{id}");
-            return await _mediator.Send(new GetCardQuery(id));
+            _logger.Log(LogLevel.Information, $"GetCard. Id:{externalId}");
+            return await _mediator.Send(new GetGameByExternalIdQuery(externalId));
         }
     }
 }
