@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using MediatR;
 
-namespace Application.Games.Commands
+namespace Application.Games.Commands.CreateNewGame
 {
     public class CreateNewGameCommand : IRequest<string>
     {
