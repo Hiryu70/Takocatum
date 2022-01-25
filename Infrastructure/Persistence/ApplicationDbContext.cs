@@ -27,7 +27,7 @@ namespace Infrastructure.Persistence
             _dateTime = dateTime;
         }
 
-        public DbSet<Game> TodoLists => Set<Game>();
+        public DbSet<Game> Games => Set<Game>();
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

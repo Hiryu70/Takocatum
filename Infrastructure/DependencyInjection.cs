@@ -24,6 +24,14 @@ public static class DependencyInjection
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
+        services.AddDistributedRedisCache(options =>
+        {
+            options.Configuration = configuration.GetConnectionString("Redis");
+            options.InstanceName = configuration["Redis:InstanceName"];
+        });
+
+        services.AddSingleton<IGameCacheService, GameCacheService>();
+
         services.AddIdentityServer()
             .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 

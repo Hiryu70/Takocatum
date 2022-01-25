@@ -5,7 +5,7 @@ namespace Application.Common.Interfaces
 {
     public interface IApplicationDbContext
     {
-        DbSet<Game> TodoLists { get; }
+        DbSet<Game> Games { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
